@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deletar Registro</title>
+    <link rel="shortcut icon" href="./FaviconIcon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styleDeletaRegistro.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Deletar Registro</h1>
+
+    <form id="registro-form">
+        <label for="id">ID:</label>
+        <input type="text" id="id" name="id" placeholder="Posição do registro na lista,EX: 1" required min="1">
+
+        <button type="submit">Deletar</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#registro-form").submit(function(event) {
+                event.preventDefault();
+
+                var id = $("#id").val();
+
+                $.ajax({
+                    type: "DELETE",
+                    url: "http://localhost:8080/Deletar/" + id,
+                    success: function(response) {
+                        $("#status").text("Registro deletado com sucesso.");
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        $("#status").text("Erro ao deletar o registro.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+<footer>
+    <dir class="linkRodaPe">
+        <a href="./index.html">Inicio</a>
+        <a href="./ListaDeRegistros.html">Lista</a>
+        <a href="./ModificaRegistro.html">Modificar Registro</a>
+        <a href="./DeletaRegistro.html">Deletar Registro</a>
+    </dir>
+</footer>
+</html>

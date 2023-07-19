@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="./FaviconIcon.png" type="image/x-icon">
+    <link rel="stylesheet" href="./styleModificaRegistro.css">
+    <title>Modificar Registro</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <h1>Modificar Registro</h1>
+
+    <form id="registro-form">
+        <label for="id">ID</label>
+        <input type="text" id="id" name="id" placeholder="posição do registro na lista, EX: 1" required min="1">
+
+        <label for="nome">Nome</label>
+        <input type="text" id="nome" name="nome" placeholder="Digite o novo nome" required>
+
+        <label for="cpf">CPF</label>
+        <input type="text" id="cpf" name="cpf" placeholder="Digite o novo CPF" required max="11">
+
+        <label for="comida">Comida</label>
+        <input type="text" id="comida" name="comida" placeholder="Digite a nova comida" required>
+
+        <button type="submit">Modificar</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+        $(document).ready(function() {
+            $("#registro-form").submit(function(event) {
+                event.preventDefault();
+
+                var id = $("#id").val();
+                var nome = $("#nome").val();
+                var cpf = $("#cpf").val();
+                var comida = $("#comida").val();
+
+                var formData = {
+                    "id": id,
+                    "nome": nome,
+                    "cpf": cpf,
+                    "comida": comida
+                };
+
+                $.ajax({
+                    type: "PUT",
+                    url: "http://localhost:8080/Modifica",
+                    contentType: "application/json",
+                    data: JSON.stringify(formData),
+                    success: function(response) {
+                        $("#status").text("Registro modificado com sucesso.");
+                    },
+                    error: function(xhr, status, error) {
+                        console.log(error);
+                        $("#status").text("Erro ao modificar o registro.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+<footer>
+    <dir class="linkRodaPe">
+        <a href="./index.html">Inicio</a>
+        <a href="./ListaDeRegistros.html">Lista</a>
+        <a href="./ModificaRegistro.html">Modificar Registro</a>
+        <a href="./DeletaRegistro.html">Deletar Registro</a>
+    </dir>
+</footer>
+</html>

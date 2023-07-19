@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Obter Registros</title>
+    <link rel="stylesheet" href="./styleListaDeRegistros.css">
+    <link rel="shortcut icon" href="./FaviconIcon.png" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+    <div id="registros"></div>
+
+    <div class="Registros">
+        <ul id="lista-registros"></ul>
+    </div>
+    
+    <script>
+        $(document).ready(function() {
+            $.ajax({
+                type: "GET",
+                url: "http://localhost:8080/ObterRegistros",
+                dataType: "json",
+                success: function(data) {
+                    if (data && data.length > 0) {
+                        $("#registros").text("Lista Café da manhã :)");
+                        for (var i = 0; i < data.length; i++) {
+                            var registro = data[i];
+                            var itemLista = "<li>Nome: " + registro.nome + ", CPF: " + registro.cpf + ", Comida: " + registro.comida + "</li>";
+                            $("#lista-registros").append(itemLista);
+                        }
+                    } else {
+                        $("#registros").text("Nenhum registro encontrado.");
+                    }
+                },
+                error: function(xhr, status, error) {
+                    console.log(error);
+                    $("#registros").text("Erro ao obter os registros.");
+                }
+            });
+        });
+    </script>
+</body>
+<footer>
+    <dir class="linkRodaPe">
+        <a href="./index.html">Inicio</a>
+        <a href="./ListaDeRegistros.html">Lista</a>
+        <a href="./ModificaRegistro.html">Modificar Registro</a>
+        <a href="./DeletaRegistro.html">Deletar Registro</a>
+    </dir>
+</footer>
+</html>
