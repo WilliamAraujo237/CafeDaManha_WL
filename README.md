@@ -30,14 +30,3 @@ insomnia
 ### Servidor Local
 XAMPP 3.3.0
 
-## Requisições de testes utilizadas no Insominia 
-
-Deletar Registro (Metodo Delete): http://localhost:8080/Deletar/11   <-- Informar o ID do registro do banco para a exclusão
-
-Consulta de registro por ID (Metodo GET): http://localhost:8080/RecuperaRegistro/1   <-- Informar o ID do registro do banco para a pesquisa
-
-Modificar Registro (Metodo PUT): http://localhost:8080/Modifica
-
-Cadastrar um Registro (Metodo POST): http://localhost:8080/Registrar
-
-Obter todos os registros (Metodo GET): http://localhost:8080/ObterRegistros
