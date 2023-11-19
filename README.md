@@ -1,5 +1,5 @@
-# CafeDaManha_WL
-Teste Café da Manhã  WL (API REST). 
+# CafeDaManha API
+Café da Manhã  API (API REST). 
 Essa aplicação gera uma lista de café da manhã onde os colaboradores de uma empresa podem informar quais comidas irão levar para a comemoração.
 a aplicação conta com 4 telas, onde cada uma é responsavel por um processo do CRUD, nesse projeto foram feitas algumas Querys nativas para a criação do CRUD,
 algumas regras forma adicionadas, fazendo assim com que não exista a repetição de registros ou registros incompletos, a parte de Front-end foi toda desenvolvida em 
